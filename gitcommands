@@ -1,0 +1,238 @@
+git clone https://token@url
+git remote set-url origin https://token@url
+
+git config --global init.defaultBranch main
+
+git config --global init.defaultBranch main
+git pull origin master --allow-unrelated-histories
+
+As of Git 2.28 (released 27th July 2020), you can now configure the name of the branch created when you init a new repository:
+$ git config --global init.defaultBranch main
+
+https://www.youtube.com/watch?v=rZsiPYXbiy8
+
+https://gist.github.com/joseluisq/1e96c54fa4e1e5647940
+
+
+
+
+git cat-file -p <hash>
+git cat-file -s <hash>
+git cat-file -t <hash>
+
+git ls-files -s   (list files in the staging area)
+
+
+Configuration
+
+git config (Get and set configuration variables that control all facets of how Git looks and operates.)
+
+git --version
+
+git  config --list (Check the setting)
+
+git config --global user.name “User name” (Set the name) 
+
+git config --global user.email “tyler@clarusway.com” (Set the email)
+git config --global core.editor Vim (Set the default editor)
+git config --global user.name (show just the user name)
+
+Set up an alias for each command:
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+Create a Local repository
+
+Kullanacağın proje için boş bir klasor oluştur.(klasörün nereye oluşturduğunu unutma, bir yere not et) 
+(mkdir git-study)
+
+Bu klasoru GIT’in takip edilmesi için komut:
+
+Initialized empty Git repository in /home/ercan/Desktop/my-projects/git-study/.git/
+(GIT artık bu klasor içinde yapılan tüm değişikleri tespi edecek(ama siz söylemeden bir işlem yapmayacak) (klasor içerisine .git isimli gizli bir klasor koydu) (ls -a) , 
+
+GIT repo silmek için 
+
+
+git init (Creareset
+rm -rf .git (delete a git repository)
+
+git status  (Display the state of the working directory and the staging area)
+
+git add  filename		(Add a file to staging (Index) area)
+git add .                                 (Add all files of a repo to staging (Index) )
+git rm --cached filename     (remove a file from staging area)
+
+git commit  -m “message”    (Record or snapshots the file permanently in the version history with a message.)
+git commit  -am “message”  (working area daki dosyaları direk local repoya atar. sadece halihazırdaki tracked files için işe yarar)
+
+git log (Display the most recent commits and the status of the head)
+commit 0f8b0e6a6aa6d7f857e19c5d7eff8a3aad476cd4 (HEAD -> master)
+Author: Tyler <tyler@clarusway.com>
+Date:   Sun May 3 05:07:46 2020 -0400
+    my first commit
+
+git log --pretty=oneline (logları tek satırda gösterir)
+git log --oneline (Display the output as one commit per line)
+
+git log -stat (Displays the files that have been modified)
+
+git log -p (Display the modified files with location)
+git blame <file name> (Display the modification on each line of a file)
+
+git reset  commitID --soft        (verilen commit ID noktasına geri döner. Bu noktadan sonra yapılan değişiklikleri Staging area     kısmına atar)
+git reset  commitID --hard      (verilen commit ID noktasına geri döner. Bu noktadan sonra yapılan değişiklikleri siler)
+
+git revert commitID                 (istediğimmiz versiyonda yapılan değişikliği silmek- bu commit loglarda gözükür)(commitin dosyası açılır ve buraya commit mesajı yazılması lazım)
+
+git commit --amend -m “message” (son yapılan commiting mesajını düzenler)
+
+branch :     (proje üzerinde bazı değişiklikler yapacağımız ve bu değişikliklerin çalışıp çalışmayacağını görmek üzere kullanılır. Yada bir projede birden fazla kişli çalışıyorsa hekes kendi dalında çalışmasını yapar (örnek frontend ve backend) daha sonra bu çalışmalarını master branch ile birleştirebilir) master branch herzamn güncel tutulmaya çalışılmalıdır.
+git branch       (local branchları gösterir) * master
+git branch -r   (remote branchları gösterir) 
+git branch -a   (tüm branchları gösterir)     
+git branch newbranchname       (yeni bir branch oluşturur)
+git checkout branchname    (HEAD - switch to a particular branch)
+git checkout -b newbranchname (bCreate a new branch and switch to it:)
+git branch -d branchname       (Delete a Branch:)
+git branch -D branchname       (herşekilde branch i siler)
+
+git merge branchname (Merge the branches)
+
+git push origin -delete (Delete a remote Branch)
+git branch -m <old> <new>
+
+Remote Repository (GITHUB)
+
+Private-public
+
+Read me
+
+gitignore
+
+Git push : Transfer the commits from your local repository to a remote server. 
+
+git push URL branch (master) (localde yapılan değişiklikleri remote repoya gönderecek)
+
+git remote add origin URL (kolaylık olsun diye remore reponun url sini origin (takma ad) ismiyle kayıt ediyoruz)
+
+git push -u origin master (localde yapılan değişiklikleri origin ismine atadığımız linke gönderecek)
+
+git clone URL (Make a local copy of the server repository)
+
+git push origin branchname (Push data to the remote server)
+git push -f (Force push data:)
+Create a pull request
+
+Forklama : başkasının remote repositesini kendi github hesabına ekleme 
+
+Remote Repostory (GITHUB)
+
+Fetch : (Download branches and tags from one or more repositories. ) çalışma alanımıza uzak repostoryden var olan bütün bilgileri getirir ve referans olarak kayıt eder, bunlar branchler halinde bulunur. Eğer istersek bunu merge komutu ile bu gelen referans noktalarını birleştirebiliyoruz. 
+
+git fetch < repository Url> (Fetch the remote repository)
+git fetch (Fetch a specific branch:)
+
+git fetch -all (Fetch all the branches simultaneously:)
+
+
+
+git fetch origin (Synchronize the local repository:)
+git merge origin/master
+
+Pull: bu komut ise bizi zahmetten kurtarır. Hızlı bir şekilde çalışma dizinimiz ile uzak repositorimiz arasındaki farklılıkları algılar. Farklı olan dosyaları indirir ve doğrudan merge işlemi yaparak bilgisayarımızdaki çalışma alanımızı en güncel hale getirir.
+
+
+Git diff
+Track the changes that have not been staged: $ git diff
+Track the changes that have staged but not committed:
+$ git diff --staged
+Track the changes after committing a file:
+$ git diff HEAD
+Track the changes between two commits:
+$ git diff Git Diff Branches:
+$ git diff < branch 2>
+Git show Shows objects:
+$ git show
+
+.gitignore
+Specify intentionally untracked files that Git should ignore. Create .gitignore:
+$ touch .gitignore List the ignored files:
+$ git ls-files -i --exclude-standard
+
+
+
+
+Git rebase
+Apply a sequence of commits from distinct branches into a final commit.
+$ git rebase
+Continue the rebasing process:
+$ git rebase -continue Abort the rebasing process:
+$ git rebase --skip
+Git interactive rebase
+Allow various oper
+
+Git remote
+Check the configuration of the remote server:
+$ git remote -v
+Add a remote for the repository:
+$ git remote add Fetch the data from the remote server:
+$ git fetch
+Remove a remote connection from the repository:
+$ git remote rm
+Rename remote server:
+$ git remote rename
+Show additional information about a particular remote:
+$ git remote show
+Change remote:
+$ git remote set-url
+Git origin master
+Push data to the remote server:
+$ git push origin master Pull data from remote server:
+$ git pull origin master (Pull the data from the server:)
+
+
+2. Undo changes
+Git revert
+Undo the changes:
+$ git revert
+Revert a particular commit:
+$ git revert
+Git reset
+Reset the changes:
+$ git reset -hard
+$ git reset -soft:
+$ git reset --mixed
+13. Removing files
+Git rm
+Remove the files from the working tree and from the index:
+$ git rm <file Name>
+Remove files from the Git But keep the files in your local repository:
+$ git rm --cached
+
+
+
+Hi everyone.
+
+“Git Hands-on 01.pdf” has been added to the clarusway-it-fundamentals-7-20 repository. You can download it to your computer.
+(you have the knowledge how to do it my friends 
+
+Removing the last commit
+To remove the last commit from git, you can simply run git reset --hard HEAD^ If you are removing multiple commits from the top, you can run git reset --hard HEAD~2 to remove the last two commits. You can increase the number to remove even more commits.
+If you want to "uncommit" the commits, but keep the changes around for reworking, remove the "--hard": git reset HEAD^ which will evict the commits from the branch and from the index, but leave the working tree around.
+If you want to save the commits on a new branch name, then run git branch newbranchname before doing the git reset.
+
+
+
+git log --graph
+
+-----------------------------------------
+
+
+// delete branch locally
+git branch -d localBranchName
+
+// delete branch remotely
+git push origin --delete remoteBranchName
+
