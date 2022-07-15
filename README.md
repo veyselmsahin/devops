@@ -1,2 +1,3 @@
 # devops
-ekleme : merhaba
+
+a simply contribition from F3585-Emrah
